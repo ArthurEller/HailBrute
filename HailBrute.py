@@ -26,7 +26,6 @@ if (select == 1) :
     """ + "\033[0;0m"
     site = raw_input("Input your target: ")
     wordlist = raw_input("Name of your worldlist? ")
-    print + "\033[0;0m"
     arq = open(wordlist)
     listas = arq.read().splitlines()
 
