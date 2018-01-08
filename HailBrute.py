@@ -15,7 +15,7 @@ print "\033[1;31m" + """
  
  """ + "\033[0;0m"
 select=int(raw_input("""   Select one Function:
-   [1] BruteForce on the site directory ( Works to Find ADM )
+   [1] BruteForce on the site directory
    [2] BruteForce on the subdomain of site
    [3] BruteForce on the DNS of site
    Function: """))
@@ -25,19 +25,18 @@ if (select == 1) :
     Welcome! 
     """ + "\033[0;0m"
     site = raw_input("Input your target: ")
-    wordlist = raw_input("Name of your worldlist? ")
-    arq = open(wordlist)
-    listas = arq.read().splitlines()
+    wordlist = raw_input("Name of your wordlist? ")
+    arquivo = open(wordlist)
+    linhas = arquivo.readlines()
 
-    for linha in listas:
-        url = site + "/" + linha
+    for linha in linhas:
+        url = site + "/" +linha
         req = requests.get (url)
-    codigo = req.status_code
-
-    if codigo == 200:
-        print url + " PAGE FOUND! " + str(codigo)
-    else:
-        print url + " NOT FOUND! " + str(codigo)
+        codigo = req.status_code
+        if codigo == 200:
+            print url  , "PAGE FOUND!"
+        elif codigo != 200:
+            print url , "PAGE NOT FOUND!"
 
 
 elif (select == 2) :
@@ -47,10 +46,11 @@ elif (select == 2) :
     site = raw_input("Input your target: ")
     wordlist = raw_input("Name of your worldlist? ")
 
-    arq = open(wordlist)
-    listas = arq.read().splitlines()
+    arquivo = open(wordlist)
+    linhas = arquivo.readlines()
 
-    for linha in listas:
+
+    for linha in linhas:
         url = "http://" + linha + "." + site
         req = requests.get(url)
     codigo = req.status_code
@@ -66,10 +66,11 @@ elif (select == 3)  :
     """ + "\033[0;0m"
     dominio = raw_input("Input your target: ")
     nome_arquivo = raw_input("Name of your worldlist? ")
-    arq = open(nome_arquivo)
-    listas = arq.read().splitlines()
+    arquivo = open(nome_arquivo)
+    linhas = arquivo.readlines()
 
-    for lista in listas:
+
+    for lista in linhas:
 
         subdom = lista + "." + dominio
         try:
@@ -78,11 +79,3 @@ elif (select == 3)  :
                     print subdom, resultado
         except:
             pass
-
-
-
-
-
-
-
-
