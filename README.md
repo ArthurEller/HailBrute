@@ -1,0 +1,2 @@
+# HailBrute
+Collect of Bruteforces 
