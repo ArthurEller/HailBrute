@@ -11,6 +11,7 @@ print "\033[1;31m" + """
  | |  | | (_| | | | |_) | |  | |_| | ||  __/
  |_|  |_|\__,_|_|_|____/|_|   \__,_|\__\___|
                             HailBrute v1.0
+                            Codded by: ArthurHMES
  Twitter: @Thuur1337 / Github: https://github.com/ArthurHMES
  
  """ + "\033[0;0m"
@@ -33,9 +34,9 @@ if (select == 1) :
         url = site + "/" +linha
         req = requests.get (url)
         codigo = req.status_code
-        if codigo == 200:
+        if codigo == 200 and 302:
             print url  , "PAGE FOUND!"
-        elif codigo != 200:
+        elif codigo != 200 and 302:
             print url , "PAGE NOT FOUND!"
 
 
