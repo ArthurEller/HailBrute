@@ -31,7 +31,7 @@ if (select == 1) :
     linhas = arquivo.readlines()
 
     for linha in linhas:
-        url = site + "/" +linha
+        url = "http://" + site + "/" +linha
         req = requests.get (url)
         codigo = req.status_code
         if codigo == 200 and 302:
